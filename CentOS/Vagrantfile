@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos/7"
   config.vm.hostname = "personal-centos"
   config.vm.network :private_network, ip: "192.168.33.31"
-  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"   # for Windows 10
+  #config.vm.synced_folder ".", "/vagrant", type: "virtualbox"   # for Windows 10
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", 1536]
   end
