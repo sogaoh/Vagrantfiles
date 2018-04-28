@@ -1,0 +1,68 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.define "handle00" do |handle00|
+    handle00.vm.box = "centos/7"
+    handle00.vm.hostname = "handle00"
+    handle00.vm.network :private_network, ip: "192.168.33.90"
+    #handle00.vm.synced_folder ".", "/vagrant", type: "virtualbox"   # for Windows 10
+    handle00.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", 1536]
+    end
+    handle00.vm.provision "shell", inline: <<-SHELL
+      #
+      # Initial Settings
+      #
+      sudo setenforce 0
+      sudo sed -e "s/enforcing/disabled/g" /etc/selinux/config
+      sudo timedatectl set-timezone Asia/Tokyo
+      sudo yum update
+
+      #
+      # Install Tools
+      #
+      sudo yum install -y git tmux vim curl wget
+    SHELL
+  end
+
+  config.vm.define "cent01" do |cent01|
+    cent01.vm.box = "centos/7"
+    cent01.vm.hostname = "server1"
+    cent01.vm.network :private_network, ip: "192.168.33.91"
+  end
+
+  config.vm.define "cent02" do |cent02|
+    cent02.vm.box = "centos/7"
+    cent02.vm.hostname = "cent02"
+    cent02.vm.network :private_network, ip: "192.168.33.92"
+  end
+
+  config.vm.define "cent03" do |cent03|
+    cent03.vm.box = "centos/7"
+    cent03.vm.hostname = "cent03"
+    cent03.vm.network :private_network, ip: "192.168.33.93"
+  end
+
+  config.vm.define "cent04" do |cent04|
+    cent04.vm.box = "centos/7"
+    cent04.vm.hostname = "cent04"
+    cent04.vm.network :private_network, ip: "192.168.33.94"
+  end
+
+  config.vm.define "ubuntu06" do |ubuntu06|
+    ubuntu06.vm.box = "ubuntu/xenial64"
+    ubuntu06.vm.hostname = "ubuntu06"
+    ubuntu06.vm.network :private_network, ip: "192.168.33.96"
+  end
+
+  config.vm.define "ubuntu07" do |ubuntu07|
+    ubuntu07.vm.box = "ubuntu/xenial64"
+    ubuntu07.vm.hostname = "ubuntu07"
+    ubuntu07.vm.network :private_network, ip: "192.168.33.97"
+  end
+
+end
