@@ -31,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "cent01" do |cent01|
     cent01.vm.box = "centos/7"
-    cent01.vm.hostname = "server1"
+    cent01.vm.hostname = "cent01"
     cent01.vm.network :private_network, ip: "192.168.33.91"
   end
 
