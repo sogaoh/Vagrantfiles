@@ -35,34 +35,36 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cent01.vm.network :private_network, ip: "192.168.33.91"
   end
 
-  config.vm.define "cent02" do |cent02|
-    cent02.vm.box = "centos/7"
-    cent02.vm.hostname = "cent02"
-    cent02.vm.network :private_network, ip: "192.168.33.92"
-  end
+#  config.vm.define "cent02" do |cent02|
+#    cent02.vm.box = "centos/7"
+#    cent02.vm.hostname = "cent02"
+#    cent02.vm.network :private_network, ip: "192.168.33.92"
+#  end
 
-  config.vm.define "cent03" do |cent03|
-    cent03.vm.box = "centos/7"
-    cent03.vm.hostname = "cent03"
-    cent03.vm.network :private_network, ip: "192.168.33.93"
-  end
+#  config.vm.define "cent03" do |cent03|
+#    cent03.vm.box = "centos/7"
+#    cent03.vm.hostname = "cent03"
+#    cent03.vm.network :private_network, ip: "192.168.33.93"
+#  end
 
-  config.vm.define "cent04" do |cent04|
-    cent04.vm.box = "centos/7"
-    cent04.vm.hostname = "cent04"
-    cent04.vm.network :private_network, ip: "192.168.33.94"
-  end
+#  config.vm.define "cent04" do |cent04|
+#    cent04.vm.box = "centos/7"
+#    cent04.vm.hostname = "cent04"
+#    cent04.vm.network :private_network, ip: "192.168.33.94"
+#  end
 
-  config.vm.define "ubuntu06" do |ubuntu06|
-    ubuntu06.vm.box = "ubuntu/xenial64"
-    ubuntu06.vm.hostname = "ubuntu06"
-    ubuntu06.vm.network :private_network, ip: "192.168.33.96"
-  end
+#  config.vm.define "ubuntu06" do |ubuntu06|
+#    ubuntu06.vm.box = "ubuntu/xenial64"
+#    ubuntu06.vm.hostname = "ubuntu06"
+#    ubuntu06.vm.network :private_network, ip: "192.168.33.96"
+#    ubuntu06.ssh.username = "ubuntu"
+#  end
 
   config.vm.define "ubuntu07" do |ubuntu07|
     ubuntu07.vm.box = "ubuntu/xenial64"
     ubuntu07.vm.hostname = "ubuntu07"
     ubuntu07.vm.network :private_network, ip: "192.168.33.97"
+    ubuntu07.ssh.username = "ubuntu"
   end
 
 end
